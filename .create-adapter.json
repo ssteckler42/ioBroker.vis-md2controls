@@ -1,0 +1,22 @@
+{
+    "cli": true,
+    "target": "directory",
+    "adapterName": "vis-md2controls",
+    "title": "MD2 controls",
+    "description": "additional widgets for Materialdesign UI",
+    "expert": "yes",
+    "features": [
+        "vis"
+    ],
+    "type": "visualization-widgets",
+    "releaseScript": "yes",
+    "authorName": "ssteckler42",
+    "authorGithub": "ssteckler42",
+    "authorEmail": "ssteckler@web.de",
+    "gitRemoteProtocol": "SSH",
+    "gitCommit": "yes",
+    "defaultBranch": "main",
+    "license": "MIT License",
+    "dependabot": "yes",
+    "creatorVersion": "2.4.0"
+}

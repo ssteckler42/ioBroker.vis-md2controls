@@ -1,0 +1,83 @@
+{
+    "common": {
+        "name": "vis-md2controls",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "MD2 controls",
+        "titleLang": {
+            "en": "MD2 controls",
+            "de": "MD2 steuert",
+            "ru": "MD2 элементы управления",
+            "pt": "controles MD2",
+            "nl": "MD2-bedieningselementen",
+            "fr": "Commandes MD2",
+            "it": "controlli MD2",
+            "es": "controles MD2",
+            "pl": "Sterowanie MD2",
+            "uk": "Елементи управління MD2",
+            "zh-cn": "MD2控件"
+        },
+        "desc": {
+            "en": "additional widgets for Materialdesign UI",
+            "de": "zusätzliche Widgets für Materialdesign UI",
+            "ru": "дополнительные виджеты для пользовательского интерфейса Materialdesign",
+            "pt": "widgets adicionais para Materialdesign UI",
+            "nl": "extra widgets voor Materialdesign UI",
+            "fr": "widgets supplémentaires pour l'interface utilisateur Materialdesign",
+            "it": "widget aggiuntivi per l'interfaccia utente di Materialdesign",
+            "es": "widgets adicionales para Materialdesign UI",
+            "pl": "dodatkowe widżety dla Materialdesign UI",
+            "uk": "додаткові віджети для інтерфейсу користувача Materialdesign",
+            "zh-cn": "Materialdesign UI 的附加小部件"
+        },
+        "authors": [
+            "ssteckler42 <ssteckler@web.de>"
+        ],
+        "keywords": [
+            "ioBroker",
+            "template",
+            "Smart Home",
+            "home automation"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "vis-md2controls.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/ssteckler42/ioBroker.vis-md2controls/main/admin/vis-md2controls.png",
+        "readme": "https://github.com/ssteckler42/ioBroker.vis-md2controls/blob/main/README.md",
+        "loglevel": "info",
+        "restartAdapters": [
+            "vis"
+        ],
+        "onlyWWW": true,
+        "noConfig": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "mode": "once",
+        "dependencies": [
+            "vis"
+        ],
+        "globalDependencies": []
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": []
+}
