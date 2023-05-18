@@ -1,6 +1,6 @@
 {
   "name": "iobroker.vis-md2controls",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "additional widgets for Materialdesign UI",
   "author": {
     "name": "ssteckler42",
@@ -33,7 +33,7 @@
   "main": "widgets/vis-md2controls.html",
   "files": [
     "widgets/**/!(tsconfig|tsconfig.*|.eslintrc).json",
-    "widgets/**/*.{html,css,png,svg,jpg,js}",
+    "widgets/**/*.{html,css,png,svg,jpg,js,ttf,eot,woff,woff2}",
     "www/",
     "io-package.json",
     "LICENSE"
