@@ -1,0 +1,144 @@
+.md2c-widget-body {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+
+.md2c-widget-control .mdui-switch {
+    height: 30px;
+    width: 50px;
+    }
+
+.md2c-widget-description {
+    padding-left: 10px;
+    padding-right:10px;
+}
+
+.md2c-widget-value {
+    float: right;
+    position: absolute;
+    right:15px;
+}
+
+/*
+.md2-container {
+    position: relative;
+}
+*/
+
+.md2-container-header {
+    padding-left: 15px;
+    padding-top: 10px;
+}
+
+.md2-container-body {
+    position: relative;
+	margin-left: 15px;
+    margin-top: 5px;
+}
+
+.md2-container-header-icon {
+    font-size: 0.85em; 
+}
+
+.md2-float {
+	float: left;
+}
+
+.md2-backgroundimage {
+  z-index: -100;
+}	
+
+.md2-transparent {
+	position: relative;
+}
+
+
+.md2-transparent .vis-widget-body::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--content-background) !important;
+    opacity: 0.7;
+}
+
+.md2-squeeze-timebar {
+    width: calc(100% - 5px);
+    height: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--design-font-color);
+    margin-left: 5px;
+}
+
+.md2-squeeze-timebarvalue {
+    background-color: var(--design-font-color);
+    height:3px;
+}
+
+.md2-squeeze-elapsed {
+    float:left;
+    padding-left: 5px;
+}
+
+.md2-squeeze-duration {
+    float: right;
+}
+
+.md2-squeeze-button-small {
+    border-radius: 2em;
+
+}
+
+
+.md2-squeeze .md2c-widget-control {
+    width: calc(100% - 10px);
+    text-align: center;
+}
+
+.md2c-switch {
+    width: 100% !important;
+}
+
+.mdui-bigvalue {
+	color: var(--design-font-color);
+	font-size: 1.7em;
+	text-shadow: none !important;
+	letter-spacing: 0px !important;
+	width: auto;
+	height: auto;
+	opacity: 1;
+}
+
+.md2-imagescale{
+    display: inline-block;
+    overflow: hidden;
+    position: unset;
+}
+
+.md2-imagescale img{
+    -webkit-transform:scale(1.5); /* Safari and Chrome */
+    -moz-transform:scale(1.5); /* Firefox */
+    -ms-transform:scale(1.5); /* IE 9 */
+    -o-transform:scale(1.5); /* Opera */
+    transform:scale(1.5);
+	top: -100px !important;
+	height: auto !important;
+	
+}
+/*
+Adjustments for Roborock run list
+*/
+.rr-runlist table colgroup col {
+	width: 0px !important;
+}
+
+.rr-runlist table tr td:nth-child(4) ~ td, .rr-runlist table th:nth-child(4) ~ th {
+    display: none;
+ }
+.rr-runlist table tr td:nth-child(3) , .rr-runlist table th:nth-child(3)  {
+    width: 90px !important;;
+ } 

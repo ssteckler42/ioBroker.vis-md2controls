@@ -1,14 +1,20 @@
 <!--
     ioBroker.vis vis-md2controls Widget-Set
 
-    version: "0.0.1"
+    version: "0.0.2"
 
     Copyright 2023 ssteckler42 ssteckler@web.de
+
+    uses parts of material widgtes
+    Copyright 2018 nisiode<nisio.air@mail.com>
 -->
 <!-- here you can include so many css as you want -->
-<link rel="stylesheet" href="widgets/vis-md2controls/css/style.css" />
+<link rel="stylesheet" href="widgets/vis-md2controls/css/md2controls.css" />
+<link rel="stylesheet" href="widgets/vis-md2controls/css/GaugeMeter.css" />
+<link rel="stylesheet" href="widgets/vis-md2controls/css/materialdesignicons.css" />
 <!-- here you can include so many js-files as you want -->
-<script type="text/javascript" src="widgets/vis-md2controls/js/vis-md2controls.js"></script>
+<script type="text/javascript" src="widgets/vis-md2controls/js/md2controls.js"></script>
+<script type="text/javascript" src="widgets/vis-md2controls/js/GaugeMeter.js"></script>
 
 <!-- the full description of format in data-vis-attrs can be found here:
     https://github.com/ioBroker/ioBroker.vis/blob/master/www/js/visEditInspect.js#L39
@@ -132,4 +138,170 @@
     <div class="vis-widget <%== this.data.attr('class') %>" style="overflow:visible; width: 230px; height: 210px" id="<%= this.data.attr('wid') %>"><%
         vis.binds['vis-md2controls'].createWidget(this.data.wid, this.view, this.data, this.style);
     %></div>
+</script>
+
+<script id="tplMD2C_Switch"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<div id="tplMD2C_Switch" style="position: relative; text-align: initial;padding: 4px ">
+				<div class="vis-widget_prev " style="width: 140px; height: 60px; padding:2px; background-color: #212121" > 
+					<img src="widgets/md2controls/img/Preview_MD2Switch.png"></div>'
+        data-vis-attrs="oid/id;title/string;label/string;subtitle/string;mduiclass-on/string;mduiclass-off/string;readonly[false]/checkbox;oidpower/id;suffix/string"
+        data-vis-set="md2controls" 
+        data-vis-type="val"
+        data-vis-name="MD2 Switch">
+		<div class="vis-widget <%== this.data.attr('class') %> md2c-switch" id="<%= this.data.attr('wid') %>" > 
+			<div class="vis-widget-body md2c-widget-body" >
+				<div class="md2c-widget-control" >
+					<div id="<%= this.data.attr('wid') %>_switch" class="mdui-switch">
+						<input type="checkbox" name="<%= this.data.attr('wid') %>_checkbox" id="<%= this.data.attr('wid') %>_checkbox" data-oid="<%= this.data.attr('oid') %>"   />
+						<label for="<%= this.data.attr('wid') %>_checkbox"><label>
+					</div>
+				</div>
+				<div class="md2c-widget-description"> 
+					<div class="mdui-title" >
+						<%= this.data.attr('title') %> 
+					</div>
+					<div class="mdui-label" > 
+						<%= this.data.attr('label') %>
+					</div>
+					<div class="mdui-subtitle">
+						<%= this.data.attr('subtitle') %>  
+					</div>
+				</div>
+				<div class="md2c-widget-value">
+				    <div id="<%= this.data.attr('wid') %>_value" class="mdui-bigvalue">   
+					</div>
+				<div>
+			</div>  
+		</div>
+		<% vis.binds['vis-md2controls'].tplMD2C_Switch(this.data.wid, this.view, this.data);  %>
+</script>
+
+<script id="tplMD2C_Dimmer"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<div id="tplMD2C_Dimmer" style="position: relative; text-align: initial;padding: 4px ">  
+				<div class="vis-widget_prev " style="width: 200px; height: 60px; padding:2px; > 
+					<img src="widgets/md2controls/img/Preview_MD2Dimmer.png"></div>'
+        data-vis-attrs="oid/id;oid-working/id;oid-color/id;title/string;subtitle/string;label/string;mduicolor/string;sliderHideOnZero[true]/checkbox;sliderWidth[150]/number;sliderInitialValue[50]/number"
+        data-vis-set="md2controls"
+        data-vis-type="ctrl,val,dimmer"
+        data-vis-name="MD2 Dimmer">
+		<div class="vis-widget <%== this.data.attr('class') %> md2c-dimmer" id="<%= this.data.attr('wid') %>" >
+			<div class="vis-widget-body md2c-widget-body" >
+				<div class="md2c-widget-control" >
+					<div class="mdui-switch mdui-<%= this.data.attr('mduicolor')%>-acc" >
+						<input type="checkbox" name="<%= this.data.attr('wid') %>_checkbox" id="<%= this.data.attr('wid') %>_checkbox"  />
+						<label for="<%= this.data.attr('wid') %>_checkbox"><label>
+					</div>
+				</div>
+				<div class="md2c-widget-description">
+					<div class="mdui-title" >
+						<%= this.data.attr('title') %> 
+					</div>
+					<div class="mdui-label" >
+						<%= this.data.attr('label') %> 
+					</div>
+					<div class="mdui-subtitle">
+						<%= this.data.attr('subtitle') %> 
+					</div>
+				</div>
+				<div class="md2c-widget-control" style="width:<%= this.data.attr('sliderWidth') %>px;right:10px;position:absolute;">
+					<div class="mdui-slider mdui-showhint mdui-transparent-acc" style="background: linear-gradient(to right, #404040, #FFFFFF);">
+						<div id="<%= this.data.attr('wid') %>_slider" class="sliderJQUI ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-oid="<%= this.data.attr('oid') %>" <%= (el) ->vis.binds.jqueryui.slider(el, {min: 0, max: 100, step: 1}) %> >
+							<span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%; width: 100%;"></span>
+						</div> 
+					</div>
+					<div class="mdui-slider mdui-showhint mdui-transparent-acc" style="background: linear-gradient(to right, #FFFF80, #E0E0FF);">
+						<div id="<%= this.data.attr('wid') %>_colorslider" class="sliderJQUI ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-oid="<%= this.data.attr('oid-color') %>" style="display:none;" <%= (el) ->vis.binds.jqueryui.slider(el, {min: 0, max: 100, step: 1}) %> >
+							<span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 0%; width: 100%;"></span>
+						</div>
+					</div>		 
+				</div>
+			</div> 
+		</div>
+		<% vis.binds['vis-md2controls'].tplMD2C_Dimmer(this.data.wid, this.view, this.data);  %>  
+  
+</script>
+<script id="tplMD2C_ViewContainer" 
+        type="text/ejs" 
+        class="vis-tpl"
+        data-vis-prev='<div id="tplMD2C_Container" style="position: relative; text-align: initial;padding: 4px ">
+				<div class="vis-widget_prev " style="width: 200px; height: 60px; padding:2px; > 
+					<img src="widgets/md2controls/img/Preview_MD2Container.png"></div>'
+        data-vis-attrs="contains_view/views;title/string;subtitle/string;mdicon/string"
+        data-vis-set="md2controls"
+        data-vis-type=""
+        data-vis-name="MD2 ViewContainer">
+		<div class="vis-widget md2-container mdui-col2-4 mdui-card-outlined <%== this.data.attr("class") %>" style="width:400px; height: 270px;" id="<%= this.data.attr('wid') %>">
+			<div class="md2-container-header">
+				<div class="mdui-title" >
+				    <% if(this.data.attr("mdicon") > "") { %>  <span class="mdi mdi-24px md2-container-header-icon <%= this.data.attr("mdicon") %> "></span>  <% } %> 
+					<%= this.data.attr('title') %>
+				</div>
+				<div class="mdui-subtitle">
+					<%= this.data.attr('subtitle') %>  
+				</div>
+			</div> 
+			<div class="md2-container-body">
+			    <% if (vis.editMode) { %>
+				<div class="editmode-helper"></div>
+			    <% } %>
+			    <div data-vis-contains="<%= this.data.attr('contains_view') %>" class="vis-widget-body vis-view-container">
+			    </div>
+            </div>
+		</div>
+   
+</script>  
+
+<script id="tplMD2C_Squeeze"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<div id="tplMD2C_Squeeze" style="position: relative; text-align: initial;padding: 4px ">
+				<div class="vis-widget_prev " style="width: 140px; height: 60px; padding:2px; background-color: #212121" > 
+					<img src="widgets/md2controls/img/Preview_MD2Squeeze.png"></div>'
+        data-vis-attrs="oid_squeezebox/id;oid_squeezebox_artist/id;oid_squeezebox_title/id;oid_squeezebox_album/id;oid_squeezebox_type/id;oid_squeezebox_artworkurl/id;oid_squeezebox_duration/id;oid_squeezebox_elapsed/id"
+        data-vis-set="md2controls" 
+        data-vis-type="val"
+        data-vis-name="MD2 Squeeze"> 
+		<div class="vis-widget <%== this.data.attr('class') %> md2-squeeze" id="<%= this.data.attr('wid') %>" >
+			<div class="vis-widget-body md2c-widget-body" >
+				<div class="md2c-widget-control" >
+					<div id="<%= this.data.attr('wid') %>_artist" class="mdui-label">Artist</div>
+					<div id="<%= this.data.attr('wid') %>_title" class="mdui-value">Title</div>
+					<div id="<%= this.data.attr('wid') %>_album" class="mdui-label">Album</div>
+					<div id="<%= this.data.attr('wid') %>_timebar" class="md2-squeeze-timebar"> 
+					   <div id="<%= this.data.attr('wid') %>_timebarvalue" class="md2-squeeze-timebarvalue"></div>					   
+					</div>
+					<div id="<%= this.data.attr('wid') %>_elapsed" class="mdui-subtitle md2-squeeze-elapsed">0:00</div>   
+					<div id="<%= this.data.attr('wid') %>_duration" class="mdui-subtitle md2-squeeze-duration">2:00</div> 
+					<div "width=100%">
+     <button id="<%= this.data.attr('wid') %>_artist" class=mdui-button-outlined md2-squeeze-button-small" role="button" ><i class="mdi mdi-skip-backward"><> <button> 
+	<button id="<%= this.data.attr('wid') %>_artist" class=mdui-button-outlined md2-squeeze-button-small" role="button" ><i class="mdi mdi-skip-backward"><> <button> 
+					<div>	
+			     </div>
+				   
+			</div>
+		</div>
+		<% vis.binds['vis-md2controls'].tplMD2C_Squeeze(this.data.wid, this.view, this.data);  %>  
+</script> 
+
+<script id="tplMD2C_Gauge"
+        type="text/ejs"
+        class="vis-tpl"
+        data-vis-prev='<div id="tplMD2C_Gauge" style="position: relative; text-align: initial;padding: 4px ">
+				<div class="vis-widget_prev " style="width: 100px; height: 100px; padding:2px; background-color: #212121" > 
+					<img src="widgets/md2controls/img/Preview_MD2Gauge.png"></div>'
+        data-vis-attrs="oid/id;label/string;text/string;prepend/string;append/string;theme/string;style[Arch]/string;size[100]/number;linethickness[3]/number;minvalue[0]/number;maxvalue[100]/number;animationstep[1]/number;showValue/checkbox;showdigits[0]/number;valueAdjust/string"
+        data-vis-set="md2controls" 
+        data-vis-type="val"
+        data-vis-name="MD2 Gauge">  
+		<div class="vis-widget <%== this.data.attr('class') %> md2c-gauge" id="<%= this.data.attr('wid') %>" > 
+			<div class="vis-widget-body md2c-widget-body" >
+				<div id="<%= this.data.attr('wid') %>_gauge" data-min="<%= this.data.attr('minvalue') %>" data-total="<%= this.data.attr('maxvalue') %>" data-prepend="<%= this.data.attr('prepend') %>" data-append="<%= this.data.attr('append') %>" data-style="<%= this.data.attr('style') %>" data-theme="<%= this.data.attr('theme') %>" data-label="<%= this.data.attr('label') %>" data-text="<%= this.data.attr('text') %>" data-animationstep="<%= this.data.attr('animationstep') %>" data-showvalue="<%= this.data.attr('showValue') %>" data-digits="<%= this.data.attr('showdigits') %>" data-size="<%= this.data.attr('size') %>" data-width="<%= this.data.attr('linethickness')%>" data-used_adjust="<%= this.data.attr('valueAdjust') %>">
+				</div>
+			</div>      
+		</div> 
+		<% vis.binds['vis-md2controls'].tplMD2C_Gauge(this.data.wid, this.view, this.data);  %>
 </script>
