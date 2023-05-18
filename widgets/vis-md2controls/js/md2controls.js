@@ -28,9 +28,9 @@ $.extend(true, systemDictionary, {
 vis.binds['vis-md2controls'] = {
     version: "0.0.1",
     showVersion: function () {
-        if (vis.binds.md2controls.version) {
-            console.log('Version md2controls: ' + vis.binds.md2controls.version);
-            vis.binds.md2controls.version = null;
+        if (vis.binds['vis-md2controls'].version) {
+            console.log('Version md2controls: ' + vis.binds['vis-md2controls'].version);
+            vis.binds['vis-md2controls'].version = null;
         }
     },
     tplMD2C_Switch: function (widgetID, view, data) {
@@ -39,7 +39,7 @@ vis.binds['vis-md2controls'] = {
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds.md2controls.tplMD2C_Switch(widgetID, view, data);
+                vis.binds['vis-md2controls'].tplMD2C_Switch(widgetID, view, data);
             }, 100);
         }
 
@@ -108,7 +108,7 @@ vis.binds['vis-md2controls'] = {
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds.md2controls.tplMD2C_Gauge(widgetID, view, data);
+                vis.binds['vis-md2controls'].tplMD2C_Gauge(widgetID, view, data);
             }, 100);
         }
 		// init gauge
@@ -145,7 +145,7 @@ vis.binds['vis-md2controls'] = {
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds.md2controls.tplMD2C_Dimmer(widgetID, view, data);
+                vis.binds['vis-md2controls'].tplMD2C_Dimmer(widgetID, view, data);
             }, 100);
         }
 
@@ -202,7 +202,7 @@ vis.binds['vis-md2controls'] = {
         // if nothing found => wait
         if (!$div.length) {
             return setTimeout(function () {
-                vis.binds.md2controls.tplMD2C_Squeeze(widgetID, view, data);
+                vis.binds['vis-md2controls'].tplMD2C_Squeeze(widgetID, view, data);
             }, 100);
         }
 
@@ -316,4 +316,4 @@ vis.binds['vis-md2controls'] = {
     }
 };
 
-vis.binds.md2controls.showVersion();
+vis.binds['vis-md2controls'].showVersion();

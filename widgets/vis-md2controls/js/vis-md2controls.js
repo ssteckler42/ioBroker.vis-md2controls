@@ -33,7 +33,7 @@ $.extend(
 
 // this code can be placed directly in vis-md2controls.html
 vis.binds["vis-md2controls"] = {
-    version: "0.0.1",
+    version: "0.0.2",
     showVersion: function () {
         if (vis.binds["vis-md2controls"].version) {
             console.log('Version vis-md2controls: ' + vis.binds["vis-md2controls"].version);
